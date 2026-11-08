@@ -1,0 +1,61 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sensor-report"
+dynamic = ["version"]   # la version est lue dans src/sensor_report/__about__.py
+description = "Petit outil en ligne de commande pour analyser des mesures de capteurs (CSV)."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Etudiante CP2S", email = "etudiante@example.com" }]
+keywords = ["sensors", "csv", "pandas", "cli"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Topic :: Scientific/Engineering",
+]
+# Dépendances externes utilisées par le programme
+dependencies = [
+  "pandas>=2.0",
+  "matplotlib>=3.7",
+  "click>=8.1",
+]
+
+[project.scripts]
+# crée la commande "sensor-report" après l'installation
+sensor-report = "sensor_report.cli:main"
+
+[project.urls]
+Repository = "https://github.com/VOTRE-COMPTE/sensor-report"
+
+# ---------- Hatch : version, build, environnements ----------
+[tool.hatch.version]
+path = "src/sensor_report/__about__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sensor_report"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "data", "README.md", "LICENSE", "pyproject.toml"]
+
+# Environnement par défaut : Hatch installe le projet + ses dépendances dedans
+[tool.hatch.envs.default]
+dependencies = []
+
+[tool.hatch.envs.default.scripts]
+# "Compilation" : on compile tous les fichiers .py en bytecode (détecte les erreurs de syntaxe)
+compile = "python -m compileall -q src"
+# Lancement rapide sur les données d'exemple
+demo = [
+  "sensor-report summary data/sample_readings.csv",
+  "sensor-report anomalies data/sample_readings.csv --column temperature",
+  "sensor-report plot data/sample_readings.csv --output report.png",
+]
+# Tout enchaîner : compiler puis construire les paquets (sdist + wheel)
+package = [
+  "compile",
+  "hatch build",
+]
