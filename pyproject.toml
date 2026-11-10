@@ -29,7 +29,7 @@ dependencies = [
 sensor-report = "sensor_report.cli:main"
 
 [project.urls]
-Repository = "https://github.com/VOTRE-COMPTE/sensor-report"
+Repository = "https://github.com/username3332016/sensor-report"
 
 # ---------- Hatch : version, build, environnements ----------
 [tool.hatch.version]
