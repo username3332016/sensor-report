@@ -5,3 +5,12 @@ build/
 *.egg-info/
 .venv/
 report.png
+
+# Fichiers temporaires des tests
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Fichiers propres aux éditeurs
+.vscode/
+.idea/
