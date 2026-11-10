@@ -26,7 +26,7 @@ Nothing else to install: Hatch creates a virtual environment and installs the de
 ## Quick start
 
 ```bash
-git clone https://github.com/YOUR-ACCOUNT/sensor-report.git
+git clone https://github.com/username3332016/sensor-report.git
 cd sensor-report
 hatch run demo
 ```
@@ -42,6 +42,7 @@ three commands of the tool on `data/sample_readings.csv` (a chart `report.png` i
 | Compile all the sources to bytecode (detects syntax errors) | `hatch run compile` |
 | Run the tool | `hatch run sensor-report --help` |
 | Run the full demo | `hatch run demo` |
+| Run automated tests | `hatch run test` |
 | Compile and build the packages (sdist + wheel) | `hatch run package` |
 | Build only | `hatch build` |
 
